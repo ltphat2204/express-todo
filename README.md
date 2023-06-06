@@ -34,6 +34,9 @@ To add more API routes to your application, follow these steps:
 2. Define your API routes within the new file.
 3. Import and use the new file in the `index.js` file located in the routes directory.
 
+### Environment Variable
+You should create a `.env.development` file to store the necessary variables for development, while there is no need for it in production mode.
+
 ## Running the App
 To run the app in development mode, use the following command:
 
