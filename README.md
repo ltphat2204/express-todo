@@ -6,7 +6,7 @@ To use this template, follow these steps:
 
 Clone this repository to your local machine:
 
-    git clone https://github.com/yukirelia/express-mvc-app.git
+    git clone https://github.com/ltphat2204/express-mvc-app.git
 
 Navigate to the project directory:
 
