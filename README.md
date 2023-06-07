@@ -38,13 +38,21 @@ To add more API routes to your application, follow these steps:
 You should create a `.env.development` file to store the necessary variables for development, while there is no need for it in production mode.
 
 ## Running the App
-To run the app in development mode, use the following command:
+To run the app in development mode, use the following command in Window:
 
-    npm run dev
+    npm run dev-win
+    
+In Mac/Linux:
 
-To run the app in production mode, use the following command:
+    npm run dev-unix
+
+To run the app in production mode, use the following command in Window:
 
     npm run start
+    
+In Mac/Linux:
+
+    npm run start-unix
 
 Make sure you have installed the required dependencies before running the app.
 
