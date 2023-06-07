@@ -1,7 +1,8 @@
 const sample = {};
 
 sample.get = (req, res) => {
-    res.send('Hello world!');
+    const now = new Date();
+    res.send(now.toLocaleDateString());
 }
 
 module.exports = sample;

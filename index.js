@@ -1,17 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 
 const app = express();
-
-//CORS policy allow
-app.use(cors);
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
-app.use(bodyParser.json())
 
 //Setup view template
 app.set('view engine', 'pug');

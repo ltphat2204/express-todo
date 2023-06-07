@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const time = document.getElementById('current-time');
-    const now = new Date();
-
-    time.innerHTML = now.toLocaleDateString();
+    
+    fetch('/api')
+    .then(res => res.text())
+    .then(data => time.innerHTML = data)
 })
