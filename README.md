@@ -48,6 +48,6 @@ To run the app in production mode, use the following command:
 
 Make sure you have installed the required dependencies before running the app.
 
-🎉 Thank you for using this Express MVC App Template! We hope it serves as a helpful starting point for your web application development. If you have any questions or need assistance, feel free to reach out to me. Happy coding! 🚀
+🎉 Thank you for using this Express MVC App Template! We hope it serves as a helpful starting point for your web application development. If you have any questions or need assistance, feel free to reach out to me. 🚀
 
-You can find me on [Facebook](https://www.facebook.com/ltp.2204) for more updates and news about our projects.
+You can find me on [Facebook](https://www.facebook.com/ltp.2204) for more updates and news about my projects.
