@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development nodemon index.js",
-    "start": "NODE_ENV=production node index.js"
+    "dev-unix": "NODE_ENV=development nodemon index.js",
+    "start-unix": "NODE_ENV=production node index.js",
+    "dev-win": "SET NODE_ENV=development & nodemon index.js",
+    "start-win": "SET NODE_ENV=production & node index.js"
   },
   "keywords": [],
   "author": "",
