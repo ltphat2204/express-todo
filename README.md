@@ -44,7 +44,7 @@ To run the app in development mode, use the following command:
 
 To run the app in production mode, use the following command:
 
-    npm run pro
+    npm run start
 
 Make sure you have installed the required dependencies before running the app.
 
