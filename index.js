@@ -27,7 +27,11 @@ app.use('/api', api);
 //Not found page
 app.use((req, res) => {
     res.status(404).render('notFound', {title: "Not Found"})
-})
+});
+
+//Connect Database
+const Database = require('./Database');
+Database.connect(process.env.DB_URI);
 
 //Port configured in dotenv, on which the app listen
 const PORT = process.env.PORT;
