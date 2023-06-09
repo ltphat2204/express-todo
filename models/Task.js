@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
@@ -16,6 +16,11 @@ const TaskSchema = new Schema({
         trim: true,
         minLength: 1,
         maxLength: 120
+    },
+    status: {
+        type: String,
+        enum: ["To do", "In progress", "Done"],
+        default: "To do"
     },
     deadline: {
         type: Date,
