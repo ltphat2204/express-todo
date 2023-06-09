@@ -5,7 +5,7 @@ html
   head
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
-    title #{title}
+    title #{title} - To do app
     link(rel="icon" href="/assets/logo.ico" sizes="50x50")
     link(rel="stylesheet" href="/styles/style.css")
     link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous")
@@ -14,21 +14,21 @@ html
 
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
         .container-fluid
-            a.navbar-brand(href='/') 
-              img.d-inline-block.align-text-top.me-2(src="/assets/logo.jpg" alt="logo" width="32" height="32")
-              |       Express
+            a.navbar-brand(href='/') Todo
             button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarNav.collapse.navbar-collapse
                 ul.navbar-nav
                     li.nav-item
                         a.nav-link.active(aria-current='page' href='/') Home
+                    li.nav-item
+                        a.nav-link(aria-current='page' href='/') Tasks
     div#root.flex-shrink-0
       block layout-content
 
     footer.footer.mt-auto.py-3.bg-light
       .container.text-center
-        span.text-muted Express MVC app bootstrapped by LTP
+        span.text-muted Express To do app made by LTP
 
     script(src='./scripts/script.js')
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous")
