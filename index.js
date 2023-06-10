@@ -15,19 +15,8 @@ if (process.env.NODE_ENV === "development"){
 //Serve static files that can be accessed directly from browser
 app.use(express.static( "./public"));
 
-//Home page
-app.get('/', (req, res) => {
-	res.render('index', {title: "Home page"});
-});
-
-//Api
-const api = require('./routes/index');
-app.use('/api', api);
-
-//Not found page
-app.use((req, res) => {
-    res.status(404).render('notFound', {title: "Not Found"})
-});
+const routes = require('./routes/index');
+app.use(routes);
 
 //Connect Database
 const Database = require('./Database');

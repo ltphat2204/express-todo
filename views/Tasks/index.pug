@@ -1,0 +1,28 @@
+extends ../layout
+
+block layout-content
+    .text-center
+        h1.display-3 Your tasks today
+        h3.text-muted#today
+        hr
+    section.container
+        table.table
+            thead
+                tr
+                    th Title
+                    th Description
+                    th Deadline
+                    th Status
+                    th Action
+            tbody
+                each val in data
+                    tr
+                        td= val.title
+                        td= val.description
+                        td= val.deadline
+                        td= val.status
+                        td
+                            a(href="/tasks/view?id=" + val._id) View | 
+                            a(href="/tasks/edit?id=" + val._id) Edit | 
+                            a(href="/tasks/delete?id=" + val._id) Delete
+        a(href="/tasks/create") Create a new task!

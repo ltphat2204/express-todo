@@ -1,0 +1,31 @@
+extends ../layout
+
+block layout-content
+    .text-center
+        h1.display-3 Your task detail
+        h3.text-muted#today
+        hr
+    section.container
+        table.table
+            thead
+                tr
+                    th Title
+                    th Description
+                    th Deadline
+                    th Status
+                    th Action
+            tbody
+                    td= data.title
+                    td= data.description
+                    td= data.deadline
+                    td= data.status
+                    td
+                        a(href="/tasks/edit?id=" + data._id) Edit | 
+                        a(href="/tasks/view?id=" + data._id) View
+
+        form.row.g-3.mt-4(action="/tasks/delete-action")
+            h3 Confirm to delete this task?
+            input(type="hidden" name="id" id="id" value=data._id)
+            .mb-3
+                button.btn.btn-secondary.me-2(type="button" onclick="window.location.href='/tasks'") Cancel
+                button.btn.btn-primary(type="submit") Confirm

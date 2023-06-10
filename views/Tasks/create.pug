@@ -1,0 +1,20 @@
+extends ../layout
+
+block layout-content
+    .text-center
+        h1.display-3 Create new Task
+        h3.text-muted#today
+        hr
+    section.container
+        form.row.g-3(method="post" action="/api/tasks")
+            .mb-3
+                label.form-label(for="title") Title
+                input.form-control#title(name="title" placeholder="Task title" required)
+            .mb-3
+                label.form-label(for="description") Description
+                textarea.form-control#description(name="description" rows="3" placeholder="Task description" required)
+            .mb-3
+                label.form-label(for="deadline") Deadline
+                input.form-control#deadline(name="deadline" type="date" placeholder="Task deadline" required)
+            .mb-3
+                button.btn.btn-primary(type="submit") Create

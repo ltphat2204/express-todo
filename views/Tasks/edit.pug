@@ -1,0 +1,29 @@
+extends ../layout
+
+block layout-content
+    .text-center
+        h1.display-3 Create new Task
+        h3.text-muted#today
+        hr
+    section.container
+        form.row.g-3(action="/tasks/edit-action")
+            input(type="hidden" name="id" id="id" value=data._id)
+            .mb-3
+                label.form-label(for="title") Title
+                input.form-control#title(name="title" value=data.title placeholder="Task title" required)
+            .mb-3
+                label.form-label(for="description") Description
+                textarea.form-control#description(name="description" rows="3" placeholder="Task description" required) #{data.description}
+            .mb-3
+                label.form-label(for="deadline") Deadline
+                input.form-control#deadline(name="deadline" aria-value=data.deadline type="date" placeholder="Task deadline" required)
+            .mb-3  
+                label.form-label(for="status") Status
+                select.form-select#status(name="status" placeholder="Task status" required)
+                    - var list_selection = ["To do", "In progress", "Done"]
+                    each val in list_selection
+                        - var selected = val == data.status;
+                        option(value=val selected=selected) #{val}
+            .mb-3
+                button.btn.btn-secondary.me-2(type="button" onclick="window.location.href='/tasks'") Cancel
+                button.btn.btn-primary(type="submit") Update

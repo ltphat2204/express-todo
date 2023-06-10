@@ -1,0 +1,25 @@
+extends ../layout
+
+block layout-content
+    .text-center
+        h1.display-3 Your task detail
+        h3.text-muted#today
+        hr
+    section.container
+        table.table
+            thead
+                tr
+                    th Title
+                    th Description
+                    th Deadline
+                    th Status
+                    th Action
+            tbody
+                    td= data.title
+                    td= data.description
+                    td= data.deadline
+                    td= data.status
+                    td
+                        a(href="/tasks/edit?id=" + data._id) Edit | 
+                        a(href="/tasks/delete?id=" + data._id) Delete
+    
