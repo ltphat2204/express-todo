@@ -6,7 +6,7 @@ controller.login = async (req, res) => {
     const user = await model.findOne({username});
     
     if (!user){
-        res.status(404).send({error: "Username not found"});
+        res.redirect('/authorization/login?error-username=' + encodeURIComponent("Username not found"));
         return;
     }
 
@@ -17,7 +17,7 @@ controller.login = async (req, res) => {
         return;
     }
     
-    res.status(404).send({"error": "Incorrect password"});
+    res.redirect('/authorization/login?error-password=' + encodeURIComponent("Incorrect password"));
 };
 
 controller.register = async (req, res) => {

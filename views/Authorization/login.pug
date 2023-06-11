@@ -17,9 +17,13 @@ html
                 .mb-3
                     label.form-label(for="username") Username
                     input.form-control#username(name="username" placeholder="Your username" required)
+                    if error && error.username 
+                        .text-danger #{error.username}
                 .mb-3
                     label.form-label(for="password") Password
                     input.form-control#password(name="password" type="password" placeholder="Your password" required)
+                    if error && error.password 
+                        .text-danger #{error.password}
                 .mb-3
                     button.btn.btn-primary(type="submit") Login 
             
