@@ -20,7 +20,8 @@ block layout-content
                     td= data.deadline
                     td= data.status
                     td
-                        a(href="/tasks/edit?id=" + data._id) Edit | 
+                        a(href="/tasks/edit?id=" + data._id) Edit 
+                        |    |  
                         a(href="/tasks/view?id=" + data._id) View
 
         form.row.g-3.mt-4(action="/tasks/delete-action")

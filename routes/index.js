@@ -7,7 +7,16 @@ router.use('/api', apiRoute);
 
 //Home page
 router.get('/', authorizationMiddleware, (req, res) => {
-	res.render('index', {title: "Home page", nickname: req.cookies.nickname});
+    fetch(`http://localhost:${process.env.PORT}/api/tasks?deadline=${new Date()}`, {
+        method: 'GET',
+        headers: {
+            userid: req.signedCookies.userId
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        res.render('index', {title: "Home page", nickname: req.cookies.nickname, dueToday: data});
+    })
 });
 
 //Task page
@@ -16,8 +25,7 @@ router.use('/tasks', authorizationMiddleware, taskViewRoute);
 
 //Authorization page
 const authorizationViewRoute = require('../views/Authorization/authorization');
-const preventReAuthMiddleware = require('../middleware/preventReauth');
-router.use('/authorization', preventReAuthMiddleware, authorizationViewRoute);
+router.use('/authorization', authorizationViewRoute);
 
 //Not found page
 router.use((req, res) => {

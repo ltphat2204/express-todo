@@ -1,10 +1,35 @@
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 const model = require('../models/Task');
 const moment = require('moment');
 const controller = {};
 
 controller.get = async (req, res) => {
     try {
-        const tasks = await model.find({}).select('-__v').sort("deadline title");
+        const { title, status, deadline } = req.query;
+
+        const conditions = {
+            user: req.headers.userid
+        };
+
+        if (title) {
+            conditions.title = { $regex: title, $options: 'i' };
+        }
+
+        if (status) {
+            conditions.status = status;
+        }
+
+        if (deadline) {
+            const deadlineDate = new Date(deadline);
+            
+            const startOfDay = new Date(deadlineDate.getFullYear(), deadlineDate.getMonth(), deadlineDate.getDate());
+            const endOfDay = new Date(deadlineDate.getFullYear(), deadlineDate.getMonth(), deadlineDate.getDate() + 1);
+
+            conditions.deadline = { $gte: startOfDay, $lt: endOfDay };
+        }
+
+        const tasks = await model.find(conditions).select('-__v').sort("deadline title");
         res.status(200).send(tasks.map(val => ({...val._doc, deadline: moment(val.deadline).format("DD/MM/YYYY")})));
     } catch(err){
         res.status(500).send({"error": err});

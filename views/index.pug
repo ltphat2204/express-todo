@@ -3,4 +3,33 @@ extends layout
 block layout-content
     .text-center
         h1.display-3 Hello #{nickname}! How is it going?
+        if dueToday.length
+            h5.display-5.text-muted Bellows are due today tasks.
+        else 
+            h5.display-5.text-muted Congratulation! No due today task!
         hr
+    section.container
+        table.table
+            thead
+                tr
+                    th Title
+                    th Description
+                    th Deadline
+                    th Status
+                    th Action
+            tbody
+                each val in dueToday
+                    tr
+                        td= val.title
+                        td= val.description
+                        td= val.deadline
+                        td= val.status
+                        td
+                            a(href="/tasks/view?id=" + val._id) View 
+                            |    | 
+                            a(href="/tasks/edit?id=" + val._id) Edit 
+                            |    | 
+                            a(href="/tasks/delete?id=" + val._id) Delete
+        a(href="/tasks/create") Create a new task!
+        |   | 
+        a(href="/tasks") View full tasks!

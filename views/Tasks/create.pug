@@ -6,6 +6,7 @@ block layout-content
         hr
     section.container
         form.row.g-3(method="post" action="/api/tasks")
+            input(type="hidden" name="user" id="user" value=userId)
             .mb-3
                 label.form-label(for="title") Title
                 input.form-control#title(name="title" placeholder="Task title" required)

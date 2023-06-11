@@ -25,7 +25,13 @@ const TaskSchema = new Schema({
     deadline: {
         type: Date,
         required: true,
-        min: Date.now
+        validate: {
+            validator: function (value) {
+              const startOfDay = new Date(value.getFullYear(), value.getMonth(), value.getDate());
+              return value >= startOfDay;
+            },
+            message: 'Deadline must be set to the start of the day or later.'
+        }
     },
     user: {
         type: mongoose.ObjectId,

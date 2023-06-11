@@ -3,7 +3,12 @@ const router = express.Router();
 
 //Home page
 router.get('/', (req, res) => {
-    fetch(`http://localhost:${process.env.PORT}/api/tasks`)
+    fetch(`http://localhost:${process.env.PORT}/api/tasks`, {
+        method: 'GET',
+        headers: {
+            userid: req.signedCookies.userId
+        }
+    })
     .then(res => res.json())
     .then(data => {
         res.render('Tasks/index', {title: "Tasks page", data});
@@ -21,7 +26,7 @@ router.get('/view', (req, res) => {
 
 //Create page
 router.get('/create', (req, res) => {
-    res.render('Tasks/create', {title: "Tasks create"});
+    res.render('Tasks/create', {title: "Tasks create", userId: req.signedCookies.userId});
 });
 
 //Edit page

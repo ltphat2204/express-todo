@@ -2,8 +2,7 @@ extends ../layout
 
 block layout-content
     .text-center
-        h1.display-3 Your tasks today
-        h3.text-muted#today
+        h1.display-3 Your tasks
         hr
     section.container
         table.table
@@ -22,7 +21,9 @@ block layout-content
                         td= val.deadline
                         td= val.status
                         td
-                            a(href="/tasks/view?id=" + val._id) View | 
-                            a(href="/tasks/edit?id=" + val._id) Edit | 
+                            a(href="/tasks/view?id=" + val._id) View 
+                            |    | 
+                            a(href="/tasks/edit?id=" + val._id) Edit 
+                            |    | 
                             a(href="/tasks/delete?id=" + val._id) Delete
         a(href="/tasks/create") Create a new task!
