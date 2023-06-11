@@ -6,7 +6,6 @@ const TaskSchema = new Schema({
         type: String,
         required: true,
         index: true,
-        unique: true,
         trim: true,
         minLength: 1,
         maxLength: 32
@@ -20,6 +19,7 @@ const TaskSchema = new Schema({
     status: {
         type: String,
         enum: ["To do", "In progress", "Done"],
+        index: true,
         default: "To do"
     },
     deadline: {
@@ -27,6 +27,11 @@ const TaskSchema = new Schema({
         required: true,
         min: Date.now
     },
+    user: {
+        type: mongoose.ObjectId,
+        required: true,
+        ref: 'user'
+    }
 })
 
 module.exports = mongoose.model('tasks', TaskSchema);

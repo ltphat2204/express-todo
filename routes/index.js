@@ -1,17 +1,23 @@
 const express = require('express')
 const router = express.Router();
 const apiRoute = require('./api');
-const taskViewRoute = require('../views/Tasks/tasks');
+const authorizationMiddleware = require('../middleware/authorization');
 
 router.use('/api', apiRoute);
 
 //Home page
-router.get('/', (req, res) => {
-	res.render('index', {title: "Home page"});
+router.get('/', authorizationMiddleware, (req, res) => {
+	res.render('index', {title: "Home page", nickname: req.cookies.nickname});
 });
 
 //Task page
-router.use('/tasks', taskViewRoute);
+const taskViewRoute = require('../views/Tasks/tasks');
+router.use('/tasks', authorizationMiddleware, taskViewRoute);
+
+//Authorization page
+const authorizationViewRoute = require('../views/Authorization/authorization');
+const preventReAuthMiddleware = require('../middleware/preventReauth');
+router.use('/authorization', preventReAuthMiddleware, authorizationViewRoute);
 
 //Not found page
 router.use((req, res) => {

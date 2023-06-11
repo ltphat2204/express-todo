@@ -10,4 +10,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 const tasksRoute = require('./tasks');
 router.use('/tasks', tasksRoute);
 
+//@path: /api/authorization
+const authorizationRoute = require('./authorization');
+router.use('/authorization', authorizationRoute);
+
 module.exports = router;

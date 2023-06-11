@@ -1,5 +1,5 @@
 const express = require('express');
-
+var cookieParser = require('cookie-parser');
 const app = express();
 
 //Setup view template
@@ -11,6 +11,9 @@ require('dotenv').config();
 if (process.env.NODE_ENV === "development"){
     require('dotenv').config({path: "./.env.development", override: true});
 }
+
+//Indicate to use the signed cookies
+app.use(cookieParser(process.env.SECRET_KEY));
 
 //Serve static files that can be accessed directly from browser
 app.use(express.static( "./public"));
